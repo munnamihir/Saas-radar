@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-display: 'DM Serif Display', serif;
+  --font-body: 'DM Sans', sans-serif;
+  --font-mono: 'DM Mono', monospace;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  background: #0e0c09;
+  color: #f7f6f3;
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  min-height: 100vh;
+  background: #0e0c09;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #3c352e; border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: #574e42; }
+
+/* Selection */
+::selection { background: #c8f53a22; color: #c8f53a; }
+
+@layer components {
+  .card {
+    @apply bg-ink-950 border border-ink-800 rounded-2xl;
+  }
+  .card-hover {
+    @apply transition-all duration-200 hover:border-ink-700 hover:bg-ink-900;
+  }
+  .metric-value {
+    font-family: var(--font-display);
+    @apply text-3xl text-ink-50;
+  }
+  .metric-label {
+    @apply text-xs font-mono uppercase tracking-widest text-ink-500;
+  }
+  .badge {
+    @apply text-xs font-mono px-2 py-0.5 rounded-full;
+  }
+  .badge-warn {
+    @apply bg-amber-950 text-amber-400 border border-amber-800;
+  }
+  .badge-danger {
+    @apply bg-red-950 text-red-400 border border-red-800;
+  }
+  .badge-ok {
+    @apply bg-green-950 text-green-400 border border-green-800;
+  }
+  .badge-info {
+    @apply bg-blue-950 text-blue-400 border border-blue-800;
+  }
+  .glow-acid {
+    box-shadow: 0 0 24px rgba(200, 245, 58, 0.15);
+  }
+  .glow-ember {
+    box-shadow: 0 0 24px rgba(255, 92, 53, 0.2);
+  }
+  .noise {
+    position: relative;
+  }
+  .noise::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    opacity: 0.4;
+    pointer-events: none;
+    border-radius: inherit;
+  }
+}
